@@ -1,0 +1,4 @@
+#!/bin/bash
+# shell.d prompt
+
+export PS1='\[\033[94m\]\u@\h\[\033[36m\] \w \[\033[39m\]\$\[\033[00m\] '

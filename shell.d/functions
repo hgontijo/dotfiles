@@ -1,0 +1,20 @@
+#!/bin/bash
+# shell.d functions
+
+function ssh_vagrant_vm() {
+  pushd $VAGRANT_VMS
+  cd $1
+  if [ -f Vagrantfile ]; then
+      echo "ssh to $1 at `pwd`"
+      vagrant up && vagrant ssh
+  else
+      echo "Vagrantfile not found."
+  fi
+  popd
+}
+
+# save a web page in a local copy and show it
+function get() {
+  mkdir -p $TMPDIR/localweb; cd $TMPDIR/localweb
+  file=$(date +'%m%d%H%M%s')".html"; wget $1 -O $file; open $file  
+}

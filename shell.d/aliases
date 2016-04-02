@@ -1,0 +1,9 @@
+#!/bin/bash
+# shell.d aliases
+
+alias centos7='ssh_vagrant_vm centos-7'
+alias coreos='ssh_vagrant_vm coreos-vagrant'
+alias ubuntu1404='ssh_vagrant_vm ubuntu-1404'
+
+alias htop='sudo htop'
+alias ll='ls -alh'

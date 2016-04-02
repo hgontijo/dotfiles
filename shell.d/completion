@@ -1,0 +1,8 @@
+#!/bin/bash
+# shell.d bash completion
+
+complete -C aws_completer aws
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

@@ -1,0 +1,14 @@
+#!/bin/bash
+# shell.d environment
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA18_AMD64_HOME=$(/usr/libexec/java_home -v 1.8)
+
+export P4EDITOR=vim
+
+export VAGRANT_VMS=/Users/hgontijo/projects/vms
+
+export MY_DOCKER_MACHINE=dm-coreos
+
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
