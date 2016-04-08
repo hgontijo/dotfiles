@@ -7,3 +7,5 @@ alias ubuntu1404='ssh_vagrant_vm ubuntu-1404'
 
 alias htop='sudo htop'
 alias ll='ls -alh'
+
+alias ec2='ssh -l ec2-user'
