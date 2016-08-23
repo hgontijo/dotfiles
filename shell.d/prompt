@@ -1,4 +1,4 @@
 #!/bin/bash
 # shell.d prompt
 
-export PS1='\[\033[94m\]\u@\h\[\033[36m\] \w \[\033[39m\]\$\[\033[00m\] '
+export PS1='\[\033[94m\]\u@\h\[\033[36m\] \w \[\033[32m\]$(GIT_PS1_SHOWUPSTREAM="auto" __git_ps1 "(%s) ")\[\033[39m\]\$\[\033[00m\] '
