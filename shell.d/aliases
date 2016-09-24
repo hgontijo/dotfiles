@@ -4,8 +4,10 @@
 alias centos7='ssh_vagrant_vm centos-7'
 alias coreos='ssh_vagrant_vm coreos-vagrant'
 alias ubuntu1404='ssh_vagrant_vm ubuntu-1404'
+alias ubuntu1604='ssh_vagrant_vm ubuntu-1604'
 
 alias htop='sudo htop'
 alias ll='ls -alh'
+alias grep='grep --color=auto'
 
-alias ec2='ssh -l ec2-user'
+alias dm='docker-machine'
