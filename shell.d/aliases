@@ -1,13 +1,46 @@
 #!/bin/bash
 # shell.d aliases
 
+alias htop='sudo htop'
+alias ll='ls -alh'
+
+alias ec2='ssh -l ec2-user'
+
 alias centos7='ssh_vagrant_vm centos-7'
 alias coreos='ssh_vagrant_vm coreos-vagrant'
 alias ubuntu1404='ssh_vagrant_vm ubuntu-1404'
 alias ubuntu1604='ssh_vagrant_vm ubuntu-1604'
 
-alias htop='sudo htop'
-alias ll='ls -alh'
+alias beep='echo -en "\007"'
+alias l.='ls -dGh .* --color=auto'
+alias ll='ls -aGhl --color=auto'
+alias ls='ls -Gh --color=auto'
 alias grep='grep --color=auto'
 
+alias rsyncw='rsync --archive --recursive --compress --links --delete --progress --stats'
+alias del_more_info='xattr -d com.apple.metadata:kMDItemWhereFroms'
+
+# hibernation and sleep settings
+alias hibernate='sudo pmset -a hibernatemode 25'
+alias sleep='sudo pmset -a hibernatemode 0'
+alias safesleep='sudo pmset -a hibernatemode 3'
+alias smartsleep='sudo pmset -a hibernatemode 2'
+
+alias htop='sudo htop'
+
 alias dm='docker-machine'
+
+alias home="chrome file://`echo ~`"
+
+# Network
+# simple ip
+alias ip='ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d " " -f2'
+# more details
+alias ip1="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+# external ip
+alias ip2="curl -s http://www.showmyip.com/simple/ | awk '{print $1}'"
+alias networkreset="sudo networksetup -setv4off Wi-fi; sudo networksetup -setnetworkserviceenabled Wi-fi off; sudo networksetup -setnetworkserviceenabled Wi-fi on; sudo networksetup -setdhcp Wi-fi"
+
+# Tools simplified 
+alias chrome="open -a \"/Applications/Google Chrome.app\""
+alias jenkins-cli='java -jar /usr/local/lib/jenkins-cli.jar'
