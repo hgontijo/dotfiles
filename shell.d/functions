@@ -24,32 +24,6 @@ function get() {
   file=$(date +'%m%d%H%M%s')".html"; wget $1 -O $file; open $file; popd
 }
 
-# Nomad helpers
-
-nomad_production_elb_name() {
-  echo "tf-lb-qeoxmfafl5hktboqyxat5w34wa"
-}
-
-nomad_server_production_asg_name() {
-  echo "gwre-devexp-ci-production-nomad-server-asg"
-}
-
-nomad_client_production_asg_name() {
-  echo "gwre-devexp-ci-production-nomad-client-asg"
-}
-
-nomad_default_elb_name() {
-  nomad_production_elb_name
-}
-
-nomad_server_default_asg_name() {
-  nomad_server_production_asg_name
-}
-
-nomad_client_default_asg_name() {
-  nomad_client_production_asg_name
-}
-
 nomad_server() {
   # lb name - load balancer name (optional parameter)
   # default: "tf-lb-sos5u56dq5axfcnqdjmkuflbxu" - nomad production elb name
