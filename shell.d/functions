@@ -24,48 +24,10 @@ function get() {
   file=$(date +'%m%d%H%M%s')".html"; wget $1 -O $file; open $file; popd
 }
 
-nomad_server() {
-  # lb name - load balancer name (optional parameter)
-  # default: "tf-lb-sos5u56dq5axfcnqdjmkuflbxu" - nomad production elb name
-  lb_name=${1:-`nomad_default_elb_name`}
-
-  aws elb describe-load-balancers \
-   --load-balancer-names ${lb_name} \
-   --query "LoadBalancerDescriptions[].DNSName" \
-   --output text
-}
-
-nomad_servers_log() {
-  grep_content=${1:-'.*'}
-  elb_name=${2:-`nomad_production_elb_name`}
-
-  for ip in `aws_elb_instances_ip ${elb_name}`; do 
-    ssh -t ec2-user@$ip "grep ${grep_content} /var/log/nomad.log"
-  done
-}
-
-nomad_servers_exec() {
-  cmd_exec=${1:-'uptime'}
-  elb_name=${2:-`nomad_production_elb_name`}
-
-  for ip in `aws_elb_instances_ip ${elb_name}`; do 
-    ssh -t ec2-user@$ip "${cmd_exec}"
-  done
-}
-
-nomad_clients_log() {
-  grep_content=${1:-'.*'}
-  asg_name=${2:-`nomad_client_default_asg_name`}
-
-  for ip in `aws_asg_instances_ip ${asg_name}`; do 
-    ssh -t ec2-user@$ip -o StrictHostKeyChecking=no "grep ${grep_content} /var/log/nomad.log"
-  done
-}
-
 # AWS helpers
 
 aws_asg_instances() {
-  asg_names=${1:-`nomad_server_default_asg_name`}
+  asg_names=${1}
 
   aws autoscaling describe-auto-scaling-groups \
     --auto-scaling-group-names ${asg_names} \
@@ -81,9 +43,7 @@ aws_asg_instances_ip() {
 }
 
 aws_elb_instances() {
-  # lb name - load balancer name (optional parameter)
-  # default: "tf-lb-sos5u56dq5axfcnqdjmkuflbxu" - nomad production elb name
-  lb_name=${1:-`nomad_default_elb_name`}
+  lb_name=${1}
 
   aws elb describe-load-balancers \
     --load-balancer-names ${lb_name} \
@@ -99,14 +59,7 @@ aws_elb_instances_ip() {
 }
 
 export -f ssh_vagrant_vm
-export -f nomad_production_elb_name
-export -f nomad_server_production_asg_name
-export -f nomad_client_production_asg_name
-export -f nomad_default_elb_name
-export -f nomad_server_default_asg_name
-export -f nomad_client_default_asg_name
-export -f nomad_server
-export -f nomad_servers_log
 export -f aws_asg_instances
+export -f aws_asg_instances_ip
 export -f aws_elb_instances
 export -f aws_elb_instances_ip
