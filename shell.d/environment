@@ -1,8 +1,8 @@
 #!/bin/bash
 # shell.d environment
 
-export GOROOT=/usr/local/opt/go/libexec/bin
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH:$GOROOT"
+export GOROOT=/usr/local/opt/go/libexec
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH:$GOROOT/bin"
 
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export JAVA18_AMD64_HOME=$(/usr/libexec/java_home -v 1.8)
