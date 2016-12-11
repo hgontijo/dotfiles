@@ -1,7 +1,8 @@
 #!/bin/bash
 # shell.d environment
 
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export GOROOT=/usr/local/opt/go/libexec/bin
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH:$GOROOT"
 
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export JAVA18_AMD64_HOME=$(/usr/libexec/java_home -v 1.8)
@@ -17,3 +18,5 @@ export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 # Save and reload the history after each command finishes
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+export SSH_INSECURE='-o StrictHostKeyChecking=no'
