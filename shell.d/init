@@ -1,4 +1,2 @@
 #!/bin/bash
 # shell.d init
-
-eval $(docker-machine env $MY_DOCKER_MACHINE)
