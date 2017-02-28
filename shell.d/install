@@ -1,0 +1,209 @@
+#!/bin/bash
+# iset -e
+
+# install.sh
+#   Install basic setup
+
+function base() {
+  brew install \
+    ansible \
+    arpack \
+    atk \
+    aws-shell \
+    awscli \
+    bash \
+    bash-completion \
+    bison \
+    cairo \
+    check \
+    consul \
+    coreutils \
+    cowsay \
+    cscope \
+    curl \
+    d-bus \
+    dbus \
+    ddrescue \
+    diffutils \
+    docker \
+    docker-compose \
+    docker-machine \
+    docker-swarm \
+    ed \
+    epstool \
+    ffmpeg \
+    fftw \
+    findutils \
+    fltk \
+    fontconfig \
+    freetype \
+    gawk \
+    gcc \
+    gd \
+    gdbm \
+    gdk-pixbuf \
+    gettext \
+    ghostscript \
+    git \
+    gl2ps \
+    glib \
+    glib-networking \
+    glpk \
+    gmp \
+    gnome-icon-theme \
+    gnu-indent \
+    gnu-sed \
+    gnu-tar \
+    gnu-which \
+    gnuplot \
+    gnutls \
+    go \
+    gobject-introspection \
+    gprof2dot \
+    gradle \
+    graphicsmagick \
+    graphviz \
+    grep \
+    groovy \
+    gsettings-desktop-schemas \
+    gtk+3 \
+    gtk-vnc \
+    gzip \
+    harfbuzz \
+    hdf5 \
+    hicolor-icon-theme \
+    htop-osx \
+    icu4c \
+    imagemagick \
+    influxdb \
+    intltool \
+    isl \
+    jo \
+    jpeg \
+    jq \
+    jsoncpp \
+    lame \
+    libepoxy \
+    libevent \
+    libffi \
+    libgcrypt \
+    libgpg-error \
+    libmpc \
+    libosinfo \
+    libpng \
+    libsoup \
+    libsoup-with-gnome \
+    libtasn1 \
+    libtermkey \
+    libtiff \
+    libtool \
+    libunistring \
+    libusb \
+    libvirt \
+    libvirt-glib \
+    libxml2 \
+    libyaml \
+    little-cms2 \
+    lua \
+    luajit \
+    lzip \
+    macvim \
+    maven \
+    metis \
+    mitmproxy \
+    mobile-shell \
+    mpfr \
+    nettle \
+    nmap \
+    node \
+    nomad \
+    octave \
+    oniguruma \
+    openjpeg \
+    openssl \
+    openssl@1.1 \
+    p11-kit \
+    p7zip \
+    packer \
+    pango \
+    parallel \
+    pcre \
+    pcre2 \
+    pixman \
+    pkg-config \
+    plotutils \
+    poppler \
+    protobuf \
+    pstoedit \
+    py2cairo \
+    pygobject3 \
+    pyqt5 \
+    python \
+    python3 \
+    qhull \
+    qrupdate \
+    qscintilla2 \
+    qt5 \
+    qt@5.7 \
+    readline \
+    rename \
+    rsync \
+    ruby \
+    screen \
+    shared-mime-info \
+    sip \
+    spice-gtk \
+    spice-protocol \
+    sqlite \
+    ssh-copy-id \
+    suite-sparse \
+    sysdig \
+    szip \
+    tbb \
+    terraform \
+    texinfo \
+    tmux \
+    transfig \
+    tree \
+    usbredir \
+    utf8proc \
+    vala \
+    veclibfort \
+    vte3 \
+    watch \
+    wdiff \
+    webp \
+    wget \
+    x264 \
+    xvid \
+    xz \
+    yajl \
+    yarn \
+    youtube-dl
+}
+
+function get_dotfiles() {
+  (
+    echo "get_dotfiles"
+  )
+
+}
+
+function usage() {
+  echo -e "install.sh\n\tBasic setup for a macOS.\n"
+  echo "Usage:"
+  echo "  base                        - install base packages"
+  echo "  dotfiles                    - get dotfiles"
+}
+
+main() {
+  local cmd=$1
+
+  if [[ $cmd == "base" ]]; then
+    base
+  elif [[ $cmd == "dotfiles" ]]; then
+    get_dotfiles
+  else
+    usage
+  fi
+}
