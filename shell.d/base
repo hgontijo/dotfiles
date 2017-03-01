@@ -1,8 +1,8 @@
 #!/bin/bash
 # iset -e
 
-# install.sh
-#   Install basic setup
+# base
+#   Provides basic setup
 
 function base() {
   brew install \
@@ -183,10 +183,9 @@ function base() {
 }
 
 function get_dotfiles() {
-  (
-    echo "get_dotfiles"
-  )
-
+  hash git || brew install git
+  cd
+  git clone git@github.com:hgontijo/dotfiles.git
 }
 
 function usage() {
