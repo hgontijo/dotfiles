@@ -25,9 +25,6 @@ function base() {
     dbus \
     ddrescue \
     diffutils \
-    docker \
-    docker-compose \
-    docker-machine \
     docker-swarm \
     ed \
     epstool \
