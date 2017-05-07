@@ -188,7 +188,7 @@ function get_dotfiles() {
 function cron() {
   ansible localhost -c local -i 'localhost,' -m cron -a 'name="brew list" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; /usr/local/bin/brew list > \"$path/brew_list.txt\""'
   ansible localhost -c local -i 'localhost,' -m cron -a 'name="crontab backup" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; crontab -l > \"$path/crontab\""'
-  ansible localhost -c local -i 'localhost,' -m cron -a 'name="bash history" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; cp /Users/hgontijo/.bash_history $path"'
+  ansible localhost -c local -i 'localhost,' -m cron -a 'name="bash history" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; cp /Users/`whoami`/.bash_history $path"'
 }
 
 function usage() {
