@@ -4,7 +4,8 @@
 alias htop='sudo htop'
 alias ll='ls -alh'
 
-alias ec2='ssh -l ec2-user'
+alias ussh='ssh -o StrictHostKeyChecking=No'
+alias ssh_ec2='ussh -l ec2-user'
 
 alias centos7='ssh_vagrant_vm centos-7'
 alias coreos='ssh_vagrant_vm coreos-vagrant'
