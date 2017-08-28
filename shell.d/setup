@@ -179,7 +179,20 @@ function base() {
     youtube-dl
 }
 
-function get_dotfiles() {
+function gitconfig() {
+    git config --global alias.lg 'log --graph --abbrev-commit --decorate --date=relative'
+    git config --global alias.lgs 'log --graph --oneline --decorate --date=relative --all'
+    git config --global alias.amend 'commit --amend --no-edit'
+
+    git config --global user.name 'Henrique Gontijo'
+    git config --global user.email 'hgontijo@guidewire.com'
+
+    git config --global pull.rebase true
+    git config --global push.default simple
+    git config --global core.excludesfile '/Users/hgontijo/.gitignore_global'
+}
+
+function dotfiles() {
   hash git || brew install git
   cd
   git clone git@github.com:hgontijo/dotfiles.git
@@ -192,23 +205,10 @@ function cron() {
 }
 
 function usage() {
-  echo -e "setup\n\tBasic setup for a macOS.\n"
+  echo -e "Basic setup for a macOS.\n"
   echo "Usage:"
   echo "  base                        - install base packages"
   echo "  dotfiles                    - get dotfiles"
   echo "  cron                        - setup cron"
-}
-
-setup() {
-  local cmd=$1
-
-  if [[ $cmd == "base" ]]; then
-    base
-  elif [[ $cmd == "dotfiles" ]]; then
-    get_dotfiles
-  elif [[ $cmd == "cron" ]]; then
-    cron
-  else
-    usage
-  fi
+  echo "  gitconfig                   - git config"
 }
