@@ -1,6 +1,16 @@
 #!/bin/bash
 # iset -e
 
+function setup_dotfiles() {
+  cd
+  git clone git@github.com:hgontijo/dotfiles.git
+  cp dotfiles/profile ~/.profile
+  source ~/.profile
+  sudo easy_install pip
+  sudo pip install ansible
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
 # base
 #   Provides basic setup
 
@@ -192,16 +202,6 @@ function gitconfig() {
     git config --global core.excludesfile '/Users/hgontijo/.gitignore_global'
 }
 
-function dotfiles() {
-  cd
-  git clone git@github.com:hgontijo/dotfiles.git
-  cp dotfiles/profile ~/.profile
-  source ~/.profile
-  sudo easy_install pip
-  sudo pip install ansible
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-}
-
 function cron() {
   ansible localhost -c local -i 'localhost,' -m cron -a 'name="brew list" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; /usr/local/bin/brew list > \"$path/brew_list.txt\""'
   ansible localhost -c local -i 'localhost,' -m cron -a 'name="crontab backup" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; crontab -l > \"$path/crontab\""'
@@ -217,4 +217,4 @@ function usage() {
   echo "  gitconfig                   - git config"
 }
 
-export -f dotfiles
+export -f setup_dotfiles
