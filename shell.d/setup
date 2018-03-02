@@ -1,16 +1,6 @@
 #!/bin/bash
 # iset -e
 
-function setup_dotfiles() {
-  cd
-  git clone git@github.com:hgontijo/dotfiles.git
-  cp dotfiles/profile ~/.profile
-  source ~/.profile
-  sudo easy_install pip
-  sudo pip install ansible
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-}
-
 # base
 #   Provides basic setup
 
@@ -212,9 +202,6 @@ function usage() {
   echo -e "Basic setup for a macOS.\n"
   echo "Usage:"
   echo "  base                        - install base packages"
-  echo "  dotfiles                    - get dotfiles"
   echo "  cron                        - setup cron"
   echo "  gitconfig                   - git config"
 }
-
-export -f setup_dotfiles

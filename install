@@ -1,0 +1,16 @@
+set -e
+
+if [ ! -d ~/dotfiles ]; then
+    pushd ~
+    git clone https://github.com/hgontijo/dotfiles.git
+    popd
+else
+    pushd ~/dotfiles
+    git pull --rebase
+    popd
+fi
+
+cp -f ~/dotfiles/profile ~/.profile
+sudo easy_install pip
+sudo pip install ansible
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
