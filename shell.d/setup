@@ -193,9 +193,13 @@ function gitconfig() {
 }
 
 function dotfiles() {
-  hash git || brew install git
   cd
   git clone git@github.com:hgontijo/dotfiles.git
+  cp dotfiles/profile ~/.profile
+  source ~/.profile
+  sudo easy_install pip
+  sudo pip install ansible
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 function cron() {
@@ -212,3 +216,5 @@ function usage() {
   echo "  cron                        - setup cron"
   echo "  gitconfig                   - git config"
 }
+
+export -f dotfiles
