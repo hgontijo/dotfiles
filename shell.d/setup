@@ -6,6 +6,10 @@
 
 function base() {
   brew update
+  brew tap caskroom/cask
+  brew tap caskroom/fonts && brew cask install font-source-code-pro
+  brew install caskroom/cask/java
+  brew install caskroom/cask/iterm2
   brew install \
     arpack \
     atk \
@@ -127,8 +131,6 @@ function base() {
     screen \
     shared-mime-info \
     sip \
-    spice-gtk \
-    spice-protocol \
     sqlite \
     ssh-copy-id \
     suite-sparse \
@@ -140,7 +142,6 @@ function base() {
     tmux \
     transfig \
     tree \
-    usbredir \
     utf8proc \
     vala \
     veclibfort \

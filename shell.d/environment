@@ -4,8 +4,11 @@
 export GOROOT=/usr/local/opt/go/libexec
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH:$GOROOT/bin:$GOPATH/bin"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export JAVA18_AMD64_HOME=$(/usr/libexec/java_home -v 1.8)
+# Configure a file "__local" and set the JAVA_VERSION
+if [ $JAVA_VERSION ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home -v $JAVA_VERSION)
+  export JAVA18_AMD64_HOME=$(/usr/libexec/java_home -v $JAVA_VERSION)
+fi
 
 export P4EDITOR=vim
 
@@ -18,6 +21,6 @@ export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 # export HISTTIMEFORMAT="%h %d %H:%M:%S> "
 # Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r"
 
 export SSH_INSECURE='-o StrictHostKeyChecking=no'
