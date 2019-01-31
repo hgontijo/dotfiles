@@ -87,6 +87,7 @@ function base() {
     lua \
     luajit \
     lzip \
+    kubernetes-cli \
     macvim \
     maven \
     metis \
@@ -156,6 +157,7 @@ function base() {
     yajl \
     yarn \
     youtube-dl
+  brew cask install minikube
 }
 
 function cron() {

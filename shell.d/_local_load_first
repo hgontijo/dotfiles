@@ -1,0 +1,10 @@
+# aliases
+
+alias awsvault='open ~/Drive/gwre-vault.sparsebundle/ && export AWS_SHARED_CREDENTIALS_FILE=/Volumes/gwre-vault/aws/credentials && ln -s /Volumes/gwre-vault/aws/credentials ~/.aws/credentials'
+
+# environment
+export GRADLE_OPTS=-Dhttp.nonProxyHosts=*.guidewire.com
+export IDEA_HOME=/Applications/IntelliJ\ IDEA\ 15.app/Contents/
+export GOPATH=/Users/hgontijo/projects/go
+export VAGRANT_VMS=/Users/hgontijo/projects/vms
+# export MY_DOCKER_MACHINE=ubuntu-1604

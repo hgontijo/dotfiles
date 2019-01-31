@@ -1,6 +1,8 @@
 #!/bin/bash
 # shell.d bash completion
 
+source <(kubectl completion bash)
+
 complete -C aws_completer aws
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
