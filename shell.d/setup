@@ -7,9 +7,11 @@
 function base() {
   brew update
   brew tap caskroom/cask
-  brew tap caskroom/fonts && brew cask install font-source-code-pro
+  brew tap caskroom/fonts
   brew install caskroom/cask/java
   brew install caskroom/cask/iterm2
+  brew cask install font-source-code-pro
+  brew cask install minikube
   brew install \
     arpack \
     atk \
@@ -157,7 +159,6 @@ function base() {
     yajl \
     yarn \
     youtube-dl
-  brew cask install minikube
 }
 
 function cron() {
