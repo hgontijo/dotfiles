@@ -1,6 +1,6 @@
-# shell
+# macOS Environment setup
 
-Shell configuration management.
+Scripts to automate macOS shell and environment setup.
 
 ## Installation
 <code>
