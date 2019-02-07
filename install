@@ -1,16 +1,33 @@
 set -e
 
-if [ ! -d ~/dotfiles ]; then
+DOTFILES_DIR=~/.dotfiles
+
+msg() {
+  echo -e "\e[34m => $@\e[0m"
+}
+
+if [ ! -d ${DOTFILES_DIR} ]; then
+    msg "Dotfiles not found. Installing at ${DOTFILES_DIR}..."
     pushd ~
-    git clone https://github.com/hgontijo/dotfiles.git
+    git clone https://github.com/hgontijo/dotfiles.git ${DOTFILES_DIR}
     popd
 else
-    pushd ~/dotfiles
+    msg "Dotfiles found at ${DOTFILES_DIR}. Updating ..."
+    pushd ${DOTFILES_DIR}
     git pull --rebase
     popd
 fi
 
-cp -f ~/dotfiles/profile ~/.profile
+msg "Creating ~/.profile ..."
+cat <<EOF > ~/.profile
+#!/bin/bash
 
-# Install Homebrew
+SHELL_ROOT=${DOTFILES_DIR}
+
+for file in \$SHELL_ROOT/shell.d/*; do
+  . \$file
+done
+EOF
+
+msg "Installing Homebrew ..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
