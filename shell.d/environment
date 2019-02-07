@@ -21,6 +21,11 @@ export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 # export HISTTIMEFORMAT="%h %d %H:%M:%S> "
 # Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r"
+# >>> Disabled in here since it's already being done by Guidewire's CCS dotfiles <<<
+# export PROMPT_COMMAND="$PROMPT_COMMAND;history -a; history -c; history -r"
+
+# Override set_ps1() done by Guidewire's CCS dotfiles
+set_ps1() { echo -n ""; }
+
 
 export SSH_INSECURE='-o StrictHostKeyChecking=no'

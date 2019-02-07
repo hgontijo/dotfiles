@@ -2,7 +2,6 @@
 # shell.d aliases
 
 alias htop='sudo htop'
-alias ll='ls -alh'
 
 alias ussh='ssh -o StrictHostKeyChecking=No'
 alias ssh_ec2='ussh -l ec2-user'
@@ -13,9 +12,19 @@ alias ubuntu1404='ssh_vagrant_vm ubuntu-1404'
 alias ubuntu1604='ssh_vagrant_vm ubuntu-1604'
 
 alias beep='echo -en "\007"'
-alias l.='ls -dGh .*'
-alias ll='ls -aGhl'
-alias ls='ls -Gh'
+
+ls_opts='-h'
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+  ls_opts="${ls_opts} --color=always"
+else # macOS `ls`
+  ls_opts="${ls_opts} -G"
+fi
+
+## Directory listing
+alias ls="ls ${ls_opts}"
+alias ll="ls -al ${ls_opts}"
+alias la="ls -a ${ls_opts}"
+
 alias grep='grep'
 
 alias rsyncw='rsync --archive --recursive --compress --links --delete --progress --stats'
@@ -26,6 +35,11 @@ alias hibernate='sudo pmset -a hibernatemode 25'
 alias sleep='sudo pmset -a hibernatemode 0'
 alias safesleep='sudo pmset -a hibernatemode 3'
 alias smartsleep='sudo pmset -a hibernatemode 2'
+
+alias flushdns='sudo discoveryutil mdnsflushcache'
+
+alias pihole='networksetup -setdnsservers Wi-Fi 192.168.1.1'
+alias cleardnsservers='networksetup -setdnsservers Wi-Fi Empty'
 
 alias htop='sudo htop'
 

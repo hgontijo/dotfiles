@@ -17,6 +17,7 @@ function base() {
     atk \
     aws-shell \
     awscli \
+    aws-iam-authenticator \
     bash \
     bash-completion \
     bison \
