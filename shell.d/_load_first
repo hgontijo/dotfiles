@@ -1,0 +1,5 @@
+# environment
+export GRADLE_OPTS=-Dhttp.nonProxyHosts=*.guidewire.com
+export IDEA_HOME=/Applications/IntelliJ\ IDEA\ 15.app/Contents/
+export GOPATH=/Users/hgontijo/projects/go
+export VAGRANT_VMS=/Users/hgontijo/projects/vms
