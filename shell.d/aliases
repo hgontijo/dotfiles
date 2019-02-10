@@ -38,7 +38,7 @@ alias smartsleep='sudo pmset -a hibernatemode 2'
 
 alias flushdns='sudo discoveryutil mdnsflushcache'
 
-alias pihole='networksetup -setdnsservers Wi-Fi 192.168.1.1'
+alias pihole='networksetup -setdnsservers Wi-Fi 192.168.1.11'
 alias cleardnsservers='networksetup -setdnsservers Wi-Fi Empty'
 
 alias htop='sudo htop'
