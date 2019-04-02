@@ -1,0 +1,36 @@
+#!/bin/bash
+# iset -e
+
+# base
+#   Provides basic setup
+
+function base() {
+  brew dump install -v --file=~/.dotfiles/Brewfile
+}
+
+function cron() {
+  ansible localhost -c local -i 'localhost,' -m cron -a 'name="brew list" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; /usr/local/bin/brew list > \"$path/brew_list.txt\""'
+  ansible localhost -c local -i 'localhost,' -m cron -a 'name="crontab backup" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; crontab -l > \"$path/crontab\""'
+  ansible localhost -c local -i 'localhost,' -m cron -a 'name="bash history" state=present minute="2" job="path=/Users/`whoami`/Drive/Workstation/$(echo `hostname` | cut -f 1 -d .); mkdir -p \"$path\"; cp /Users/`whoami`/.bash_history $path"'
+}
+
+function gitconfig() {
+    git config --global alias.lg 'log --graph --abbrev-commit --decorate --date=relative'
+    git config --global alias.lgs 'log --graph --oneline --decorate --date=relative --all'
+    git config --global alias.amend 'commit --amend --no-edit'
+
+    git config --global user.name 'Henrique Gontijo'
+    git config --global user.email 'hgontijo@guidewire.com'
+
+    git config --global pull.rebase true
+    git config --global push.default simple
+    git config --global core.excludesfile '/Users/hgontijo/.gitignore_global'
+}
+
+function usage() {
+  echo -e "Basic setup for a macOS.\n"
+  echo "Usage:"
+  echo "  base                        - install base packages"
+  echo "  cron                        - setup cron"
+  echo "  gitconfig                   - git config"
+}

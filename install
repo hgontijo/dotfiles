@@ -22,7 +22,7 @@ msg "Creating ~/.profile ..."
 cat <<EOF > ~/.profile
 #!/bin/bash
 
-for file in ${DOTFILES_DIR}/files/*; do
+for file in ${DOTFILES_DIR}/profile/*; do
   . \$file
 done
 EOF
