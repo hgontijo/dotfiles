@@ -1,5 +1,5 @@
 #!/bin/bash
-# shell.d environment
+# dotfiles.d environment
 
 # Configure a file "__local" and set the JAVA_VERSION
 if [ $JAVA_VERSION ]; then

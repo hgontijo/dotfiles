@@ -1,7 +1,5 @@
 #!/bin/bash
-# shell.d bash completion
-
-source <(kubectl completion bash)
+# dotfiles.d bash completion
 
 complete -C aws_completer aws
 

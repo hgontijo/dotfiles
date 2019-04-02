@@ -1,5 +1,5 @@
 #!/bin/bash
-# shell.d aliases
+# dotfiles.d aliases
 
 alias htop='sudo htop'
 

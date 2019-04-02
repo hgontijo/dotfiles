@@ -19,12 +19,10 @@ else
 fi
 
 msg "Creating ~/.profile ..."
-cat <<EOF > ~/.profile
+cat <<EOF > ~/.profile1
 #!/bin/bash
 
-SHELL_ROOT=${DOTFILES_DIR}
-
-for file in \$SHELL_ROOT/shell.d/*; do
+for file in ${DOTFILES_DIR}/files/*; do
   . \$file
 done
 EOF

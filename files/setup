@@ -8,6 +8,7 @@ function base() {
   brew update
   brew tap caskroom/cask
   brew tap caskroom/fonts
+  brew tap caskroom/cask
   brew install caskroom/cask/java
   brew install caskroom/cask/iterm2
   brew cask install font-source-code-pro
@@ -48,6 +49,7 @@ function base() {
     gdk-pixbuf \
     gettext \
     ghostscript \
+    gimp \
     git \
     gl2ps \
     glib \

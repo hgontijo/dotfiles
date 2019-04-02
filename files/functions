@@ -1,5 +1,5 @@
 #!/bin/bash
-# shell.d functions
+# dotfiles.d functions
 
 # Encryption/Decryption
 function encrypt() {
@@ -10,6 +10,25 @@ function encrypt() {
 function decrypt() {
   openssl aes-256-cbc -d -salt -in "$1" | \
   tar -v --extract --gzip --file -
+}
+
+function awsprofile() {
+  local DEFAULT_AWS_REGION=us-west-2
+  local CREDENTIALS_FILE=/Volumes/gwre-vault/aws/credentials-gwre
+  
+  if [ -f ${CREDENTIALS_FILE} ]; then
+    if [ -z $2 ]; then
+      echo "Using default region: ${DEFAULT_AWS_REGION}"
+      export AWS_DEFAULT_REGION=${DEFAULT_AWS_REGION}
+    else
+      export AWS_DEFAULT_REGION=$2
+    fi
+    export AWS_SHARED_CREDENTIALS_FILE=${CREDENTIALS_FILE}
+    export AWS_PROFILE=$1
+    export AWS_AVAILABILITY_ZONES=$(aws ec2 describe-availability-zones --profile ${AWS_PROFILE} | jq -c '[.AvailabilityZones[].ZoneName]')
+  else
+    echo "${CREDENTIALS_FILE} not found."
+  fi
 }
 
 function ssh_vagrant_vm() {
