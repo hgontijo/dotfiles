@@ -3,7 +3,7 @@ set -e
 DOTFILES_DIR=~/.dotfiles
 
 msg() {
-  echo -e "\e[34m => $@\e[0m"
+  echo -e "\e[94m=> \e[0m\e[1m$@\e[0m"
 }
 
 if [ ! -d ${DOTFILES_DIR} ]; then
