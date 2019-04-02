@@ -19,7 +19,7 @@ else
 fi
 
 msg "Creating ~/.profile ..."
-cat <<EOF > ~/.profile1
+cat <<EOF > ~/.profile
 #!/bin/bash
 
 for file in ${DOTFILES_DIR}/files/*; do
