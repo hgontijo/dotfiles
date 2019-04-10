@@ -32,7 +32,6 @@ alias del_more_info='xattr -d com.apple.metadata:kMDItemWhereFroms'
 
 # hibernation and sleep settings
 alias hibernate='sudo pmset -a hibernatemode 25'
-alias sleep='sudo pmset -a hibernatemode 0'
 alias safesleep='sudo pmset -a hibernatemode 3'
 alias smartsleep='sudo pmset -a hibernatemode 2'
 
