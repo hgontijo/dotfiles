@@ -24,5 +24,4 @@ export HISTFILESIZE=100000               # big big history
 # Override set_ps1() done by Guidewire's CCS dotfiles
 set_ps1() { echo -n ""; }
 
-
 export SSH_INSECURE='-o StrictHostKeyChecking=no'

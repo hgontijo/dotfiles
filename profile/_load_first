@@ -2,11 +2,10 @@
 
 # environment
 export GRADLE_OPTS=-Dhttp.nonProxyHosts=*.guidewire.com
-export IDEA_HOME=/Applications/IntelliJ\ IDEA\ 15.app/Contents/
+export IDEA_HOME=/Applications/IntelliJ\ IDEA\ U-2019.1.4-jbr11.app/Contents/
 export GOPATH=/Users/hgontijo/projects/go
-export VAGRANT_VMS=/Users/hgontijo/projects/vms
 
-export JAVA_VERSION=1.8
+export JAVA_VERSION=11
 export GOROOT=/usr/local/opt/go/libexec
 
 # Ensure the GNU tools are loaded first into the PATH
@@ -17,11 +16,3 @@ export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
-
-# Okta AWS CLI
-if [[ -f "$HOME/.okta/bash_functions" ]]; then
-    . "$HOME/.okta/bash_functions"
-fi
-if [[ -d "$HOME/.okta/bin" && ":$PATH:" != *":$HOME/.okta/bin:"* ]]; then
-    PATH="$HOME/.okta/bin:$PATH"
-fi

@@ -13,16 +13,17 @@ function decrypt() {
 }
 
 function awsprofile() {
-  local DEFAULT_AWS_REGION=us-west-2
+  # local DEFAULT_AWS_REGION=us-west-2
   local CREDENTIALS_FILE=/Volumes/gwre-vault/aws/credentials-gwre
-  
+
   if [ -f ${CREDENTIALS_FILE} ]; then
-    if [ -z $2 ]; then
-      echo "Using default region: ${DEFAULT_AWS_REGION}"
-      export AWS_DEFAULT_REGION=${DEFAULT_AWS_REGION}
-    else
-      export AWS_DEFAULT_REGION=$2
-    fi
+    # if [ -z $2 ]; then
+    #   echo "Using default region: ${DEFAULT_AWS_REGION}"
+    #   export AWS_REGION=${DEFAULT_AWS_REGION}
+    # else
+    #   export AWS_REGION=$2
+    # fi
+    unset AWS_REGION
     export AWS_SHARED_CREDENTIALS_FILE=${CREDENTIALS_FILE}
     export AWS_PROFILE=$1
     export AWS_AVAILABILITY_ZONES=$(aws ec2 describe-availability-zones --profile ${AWS_PROFILE} | jq -c '[.AvailabilityZones[].ZoneName]')
