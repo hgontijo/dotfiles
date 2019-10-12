@@ -18,6 +18,9 @@ else
     popd
 fi
 
+msg "Backing up ~/.profile at ~/.profile.bkp"
+cp ~/.profile ~/.profile.bkp
+
 msg "Creating ~/.profile ..."
 cat <<EOF > ~/.profile
 #!/bin/bash
@@ -29,4 +32,6 @@ EOF
 
 msg "Installing Homebrew ..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+pushd ${DOTFILES_DIR}
 brew bundle
+popd
