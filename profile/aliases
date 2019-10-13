@@ -6,11 +6,6 @@ alias htop='sudo htop'
 alias ussh='ssh -o StrictHostKeyChecking=No'
 alias ssh_ec2='ussh -l ec2-user'
 
-alias centos7='ssh_vagrant_vm centos-7'
-alias coreos='ssh_vagrant_vm coreos-vagrant'
-alias ubuntu1404='ssh_vagrant_vm ubuntu-1404'
-alias ubuntu1604='ssh_vagrant_vm ubuntu-1604'
-
 alias beep='echo -en "\007"'
 
 alias java8='export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version'
