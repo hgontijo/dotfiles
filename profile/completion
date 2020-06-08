@@ -1,6 +1,8 @@
 #!/bin/bash
 # dotfiles.d bash completion
 
+alias k=kubectl
+complete -F __start_kubectl k
 complete -C aws_completer aws
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
