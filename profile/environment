@@ -1,6 +1,9 @@
 #!/bin/bash
 # dotfiles.d environment
 
+# Avoid closing terminal when pressing Ctrl+d
+set -o ignoreeof
+
 # Configure a file "__local" and set the JAVA_VERSION
 if [ $JAVA_VERSION ]; then
   export JAVA_HOME=$(/usr/libexec/java_home -v $JAVA_VERSION)
