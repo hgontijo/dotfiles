@@ -19,7 +19,7 @@ else
 fi
 
 msg "Backing up ~/.profile at ~/.profile.bkp"
-cp ~/.profile ~/.profile.bkp
+[ ! -f ~/.profile ] || cp ~/.profile ~/.profile.bkp
 
 msg "Creating ~/.profile ..."
 cat <<EOF > ~/.profile
