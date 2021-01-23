@@ -18,11 +18,12 @@ else
     popd
 fi
 
-msg "Backing up ~/.profile at ~/.profile.bkp"
 if [[ "$SHELL" == *"/bash"* || "$SHELL" == *"/sh"* ]]; then
+  msg "Backing up ~/.profile at ~/.profile.bkp"
   [ ! -f ~/.profile ] || cp ~/.profile ~/.profile.bkp
   PROFILE_FILE=~/.profile
 elif [[ "$SHELL" == *"/zsh"* ]]; then
+  msg "Backing up ~/.zprofile at ~/.zprofile.bkp"
   [ ! -f ~/.zprofile ] || cp ~/.zprofile ~/.zprofile.bkp
   PROFILE_FILE=~/.zprofile
 else
