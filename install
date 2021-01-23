@@ -40,7 +40,7 @@ done
 EOF
 
 msg "Installing Homebrew ..."
-sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 pushd ${DOTFILES_DIR}
 brew bundle
 popd
