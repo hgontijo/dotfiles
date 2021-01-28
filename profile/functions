@@ -1,4 +1,4 @@
-#!/bin/bash
+
 # dotfiles.d functions
 
 # Encryption/Decryption
@@ -54,43 +54,3 @@ function get() {
   mkdir -p $TMPDIR/localweb; pushd $TMPDIR/localweb
   file=$(date +'%m%d%H%M%s')".html"; wget $1 -O $file; open $file; popd
 }
-
-# AWS helpers
-
-aws_asg_instances() {
-  asg_names=${1}
-
-  aws autoscaling describe-auto-scaling-groups \
-    --auto-scaling-group-names ${asg_names} \
-    --query "AutoScalingGroups[].Instances[].InstanceId" \
-    --output text
-}
-
-aws_asg_instances_ip() {
-  aws ec2 describe-instances \
-    --instance-ids $(aws_asg_instances $1) \
-    --query "Reservations[].Instances[].PrivateIpAddress" \
-    --output text
-}
-
-aws_elb_instances() {
-  lb_name=${1}
-
-  aws elb describe-load-balancers \
-    --load-balancer-names ${lb_name} \
-    --query "LoadBalancerDescriptions[].Instances[].InstanceId" \
-    --output text
-}
-
-aws_elb_instances_ip() {
-  aws ec2 describe-instances \
-    --instance-ids $(aws_elb_instances $1) \
-    --query "Reservations[].Instances[].PrivateIpAddress" \
-    --output text
-}
-
-export -f ssh_vagrant_vm
-export -f aws_asg_instances
-export -f aws_asg_instances_ip
-export -f aws_elb_instances
-export -f aws_elb_instances_ip

@@ -1,4 +1,4 @@
-#!/bin/bash
+
 # dotfiles.d environment
 
 # Avoid closing terminal when pressing Ctrl+d
@@ -19,6 +19,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
+
 # export HISTTIMEFORMAT="%h %d %H:%M:%S> "
 # Save and reload the history after each command finishes
 # >>> Disabled in here since it's already being done by Guidewire's CCS dotfiles <<<

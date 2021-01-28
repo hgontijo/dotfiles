@@ -1,4 +1,3 @@
-#!/bin/bash
 
 # environment
 export GRADLE_OPTS=-Dhttp.nonProxyHosts=*.guidewire.com
@@ -6,7 +5,7 @@ export IDEA_HOME=/Applications/IntelliJ\ IDEA\ U-2019.1.4-jbr11.app/Contents/
 export GOPATH=~/projects/go
 export GOROOT=/usr/local/opt/go/libexec
 
-export JAVA_VERSION=11
+# export JAVA_VERSION=11
 
 # Ensure the GNU tools are loaded first into the PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
