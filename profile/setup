@@ -19,12 +19,9 @@ function gitconfig() {
     git config --global alias.lgs 'log --graph --oneline --decorate --date=relative --all'
     git config --global alias.amend 'commit --amend --no-edit'
 
-    git config --global user.name 'Henrique Gontijo'
-    git config --global user.email 'hgontijo@guidewire.com'
-
     git config --global pull.rebase true
     git config --global push.default simple
-    git config --global core.excludesfile '/Users/hgontijo/.gitignore_global'
+    git config --global core.excludesfile "/Users/`whoami`/.gitignore_global"
 }
 
 function usage() {
