@@ -39,6 +39,9 @@ for file in ${DOTFILES_DIR}/profile/*; do
 done
 EOF
 
+msg "Download Git Prompt to ~/.git-prompt.sh ..."
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+
 msg "Installing Homebrew ..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 pushd ${DOTFILES_DIR}
