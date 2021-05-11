@@ -21,8 +21,8 @@ function gitconfig() {
     git config --global alias.lgs 'log --graph --oneline --decorate --date=relative --all'
     git config --global alias.st status
     git config --global alias.fp 'fetch --prune'
+    git config --global alias.prb 'pull --rebase'
 
-    git config --global pull.rebase true
     git config --global push.default simple
     git config --global core.excludesfile "/Users/`whoami`/.gitignore_global"
 }
