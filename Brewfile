@@ -9,7 +9,9 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "int128/kubelogin"
 tap "warrensbox/tap"
+tap "wallix/awless"
 
+brew "awless"
 brew "aws-iam-authenticator"
 brew "awscli"
 # brew "bash"
@@ -51,6 +53,7 @@ brew "python"
 brew "rename"
 brew "rsync"
 brew "screen"
+brew "sipcalc"
 # brew "shellcheck" # not found. Failure on MacBook M1
 brew "ssh-copy-id"
 brew "svn" # required by font-source-code-pro
