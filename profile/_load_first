@@ -1,7 +1,7 @@
 
 # environment
 export GRADLE_OPTS=-Dhttp.nonProxyHosts=*.guidewire.com
-export IDEA_HOME=/Applications/IntelliJ\ IDEA\ U-2019.1.4-jbr11.app/Contents/
+export IDEA_HOME=/Applications/IntelliJ\ IDEA.app/Contents
 export GOPATH=~/projects/go
 export GOROOT=/usr/local/opt/go/libexec
 
@@ -16,3 +16,4 @@ export PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="${IDEA_HOME}/MacOS:$PATH"
