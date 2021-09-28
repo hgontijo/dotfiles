@@ -24,6 +24,7 @@ brew "ddrescue"
 # brew "dep" # # not found. Failure on MacBook M1
 brew "diffutils"
 brew "direnv"
+brew "eksctl"
 brew "findutils"
 brew "fasd"
 brew "gawk"
