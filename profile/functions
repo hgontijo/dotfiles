@@ -54,3 +54,15 @@ function get() {
   mkdir -p $TMPDIR/localweb; pushd $TMPDIR/localweb
   file=$(date +'%m%d%H%M%s')".html"; wget $1 -O $file; open $file; popd
 }
+
+function unset-aws-profile() {
+  unset AWS_REGION
+  unset AWS_PROFILE
+  unset AWS_AVAILABILITY_ZONES
+  unset AWS_SHARED_CREDENTIALS_FILE
+}
+
+function unset-aws-keys() {
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SECRET_ACCESS_KEY
+}
