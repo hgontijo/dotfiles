@@ -26,6 +26,10 @@ elif [[ "$SHELL" == *"/zsh"* ]]; then
   msg "Backing up ~/.zprofile at ~/.zprofile.bkp"
   [ ! -f ~/.zprofile ] || cp ~/.zprofile ~/.zprofile.bkp
   PROFILE_FILE=~/.zprofile
+
+  cat <<EOF > ~/.zshrc
+eval "$(starship init zsh)"
+EOF
 else
   echo "$SHELL is not supported. Currently supported: bash, sh and zsh."
 fi
@@ -39,8 +43,7 @@ for file in ${DOTFILES_DIR}/profile/*; do
 done
 EOF
 
-msg "Download Git Prompt to ~/.git-prompt.sh ..."
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+
 
 msg "Installing Homebrew ..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
