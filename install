@@ -30,7 +30,7 @@ backup_shell_profile() {
     [ ! -f ~/.zprofile ] || cp ~/.zprofile ~/.zprofile.bkp
     PROFILE_FILE=~/.zprofile
 
-    echo "eval \"\$(starship init zsh)\" > ~/.zshrc
+    echo "eval \"\$(starship init zsh)\"" > ~/.zshrc
   else
     echo "$SHELL is not supported. Currently supported: bash, sh and zsh."
     exit 1
