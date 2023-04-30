@@ -59,6 +59,7 @@ brew "screen"
 brew "sipcalc"
 # brew "shellcheck" # not found. Failure on MacBook M1
 brew "ssh-copy-id"
+brew "starship"
 brew "svn" # required by font-source-code-pro
 brew "telnet"
 brew "tfswitch"
