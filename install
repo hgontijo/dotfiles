@@ -1,4 +1,4 @@
-# set -e
+set -e
 
 DOTFILES_DIR=~/.dotfiles
 
@@ -45,7 +45,7 @@ configure_shell_profile() {
   for file in ${DOTFILES_DIR}/profile/*; do
     . \$file
   done
-  EOF
+EOF
 }
 
 install_homebrew() {
