@@ -3,50 +3,60 @@
 DOTFILES_DIR=~/.dotfiles
 
 msg() {
-  echo -e "\e[94m=> \e[0m\e[1m$@\e[0m"
+  echo -e "\n=> $@"
 }
 
-if [ ! -d ${DOTFILES_DIR} ]; then
-    msg "Dotfiles not found. Installing at ${DOTFILES_DIR}..."
-    pushd ~
-    git clone https://github.com/hgontijo/dotfiles.git ${DOTFILES_DIR}
-    popd
-else
-    msg "Dotfiles found at ${DOTFILES_DIR}. Updating ..."
-    pushd ${DOTFILES_DIR}
-    git pull --rebase
-    popd
-fi
+clone_dotfiles_repo() {
+  if [ ! -d ${DOTFILES_DIR} ]; then
+      msg "Dotfiles not found. Installing at ${DOTFILES_DIR}..."
+      pushd ~
+      git clone https://github.com/hgontijo/dotfiles.git ${DOTFILES_DIR}
+      popd
+  else
+      msg "Dotfiles found at ${DOTFILES_DIR}. Updating ..."
+      pushd ${DOTFILES_DIR}
+      git pull --rebase
+      popd
+  fi
+}
 
-if [[ "$SHELL" == *"/bash"* || "$SHELL" == *"/sh"* ]]; then
-  msg "Backing up ~/.profile at ~/.profile.bkp"
-  [ ! -f ~/.profile ] || cp ~/.profile ~/.profile.bkp
-  PROFILE_FILE=~/.profile
-elif [[ "$SHELL" == *"/zsh"* ]]; then
-  msg "Backing up ~/.zprofile at ~/.zprofile.bkp"
-  [ ! -f ~/.zprofile ] || cp ~/.zprofile ~/.zprofile.bkp
-  PROFILE_FILE=~/.zprofile
+backup_shell_profile() {
+  if [[ "$SHELL" == *"/bash"* || "$SHELL" == *"/sh"* ]]; then
+    msg "Backing up ~/.profile at ~/.profile.bkp"
+    [ ! -f ~/.profile ] || cp ~/.profile ~/.profile.bkp
+    PROFILE_FILE=~/.profile
+  elif [[ "$SHELL" == *"/zsh"* ]]; then
+    msg "Backing up ~/.zprofile at ~/.zprofile.bkp"
+    [ ! -f ~/.zprofile ] || cp ~/.zprofile ~/.zprofile.bkp
+    PROFILE_FILE=~/.zprofile
 
-  cat <<EOF > ~/.zshrc
-eval "$(starship init zsh)"
-EOF
-else
-  echo "$SHELL is not supported. Currently supported: bash, sh and zsh."
-fi
+    echo "eval \"\$(starship init zsh)\" > ~/.zshrc
+  else
+    echo "$SHELL is not supported. Currently supported: bash, sh and zsh."
+    exit 1
+  fi
+}
 
-msg "Creating ~/.profile ..."
-cat <<EOF > $PROFILE_FILE
-#!$SHELL
+configure_shell_profile() {
+  msg "Creating ~/.profile ..."
+  cat <<EOF > $PROFILE_FILE
+  #!$SHELL
 
-for file in ${DOTFILES_DIR}/profile/*; do
-  . \$file
-done
-EOF
+  for file in ${DOTFILES_DIR}/profile/*; do
+    . \$file
+  done
+  EOF
+}
 
+install_homebrew() {
+  msg "Installing Homebrew ..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  pushd ${DOTFILES_DIR}
+  brew bundle
+  popd
+}
 
-
-msg "Installing Homebrew ..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-pushd ${DOTFILES_DIR}
-brew bundle
-popd
+clone_dotfiles_repo
+backup_shell_profile
+configure_shell_profile
+install_homebrew
