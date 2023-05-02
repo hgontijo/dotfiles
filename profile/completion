@@ -1,21 +1,24 @@
 
 # dotfiles.d shell completion
 
-# shell completion comtability
-
 if [[ "$SHELL" == *"zsh"* ]]; then
   if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   fi
 
-  autoload bashcompinit
-  bashcompinit
+  # autoload bashcompinit
+  # bashcompinit
 
   autoload -Uz compinit
   compinit
 elif [[ "$SHELL" == *"bash"* ]]; then
   autoload bashcompinit
   bashcompinit
+
+  # TODO: Check if this is needed
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    emulate bash -c "$(brew --prefix)/etc/bash_completion"
+  fi
 fi
 
 alias k=kubectl
@@ -23,6 +26,3 @@ alias k=kubectl
 # TODO: Install kubectl when is released for Darwin/arm64
 #complete -F __start_kubectl k
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  emulate bash -c "$(brew --prefix)/etc/bash_completion"
-fi

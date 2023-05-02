@@ -2,10 +2,50 @@
 # dotfiles.d prompt
 
 if [[ "$SHELL" == *"zsh"* ]]; then
-    source ~/.git-prompt.sh
-    # PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b %# '
-    setopt PROMPT_SUBST
-    precmd () { __git_ps1 "%F{238}%n%f" " %F{28}%~ %f%% " " (%s)" }
+
+    mkdir -p ~/.config
+    cat <<EOF > ~/.config/starship.toml
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the "❯" symbol in the prompt with "➜"
+# [character]                            # The name of the module we are configuring is "character"
+# success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+
+[git_status]
+conflicted = "🏳"
+ahead = "⬆"
+behind = "⬇"
+diverged = "❌"
+up_to_date = "✓"
+untracked = "🤷"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[golang]
+disabled = true
+
+[aws]
+disabled = true
+style = "bold blue"
+symbol = ""
+# format = 'on [$symbol($profile )]($style)'
+EOF
+
+
 elif [[ "$SHELL" == *"bash"* ]]; then
     export PS1='\[\033[94m\]\u\[\033[36m\] \w \[\033[32m\]$(GIT_PS1_SHOWUPSTREAM="auto" __git_ps1 "(%s) ")\[\033[39m\]\$\[\033[00m\] '
 fi
