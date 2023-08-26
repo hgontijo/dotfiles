@@ -31,6 +31,19 @@ backup_shell_profile() {
     PROFILE_FILE=~/.zprofile
 
     echo "eval \"\$(starship init zsh)\"" > ~/.zshrc
+    # Preserve bash history in multiple terminal windows
+    echo "export HISTCONTROL=ignoredups:erasedups  # no duplicate entries" >> ~/.zshrc
+    echo "export HISTSIZE=1000000                  # big big history" >> ~/.zshrc
+    echo "export HISTFILESIZE=1000000              # big big history" >> ~/.zshrc
+    echo "export HISTFILE=~/.zsh_history" >> ~/.zshrc
+    echo "export SAVEHIST=1000000"        >> ~/.zshrc
+    echo "setopt extended_history       # record timestamp of command in HISTFILE" >> ~/.zshrc
+    echo "setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE" >> ~/.zshrc
+    echo "setopt hist_ignore_dups       # ignore duplicated commands history list" >> ~/.zshrc
+    echo "setopt hist_ignore_space      # ignore commands that start with space" >> ~/.zshrc
+    echo "setopt hist_verify            # show command with history expansion to user before running it" >> ~/.zshrc
+    echo "setopt inc_append_history     # add commands to HISTFILE in order of execution" >> ~/.zshrc
+    echo "setopt share_history          # share command history data" >> ~/.zshrc
   else
     echo "$SHELL is not supported. Currently supported: bash, sh and zsh."
     exit 1
@@ -51,6 +64,10 @@ EOF
 install_homebrew() {
   msg "Installing Homebrew ..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+}
+
+install_packages() {
+  msg "Installing packages ..."
   pushd ${DOTFILES_DIR}
   brew bundle
   popd
@@ -60,3 +77,4 @@ clone_dotfiles_repo
 backup_shell_profile
 configure_shell_profile
 install_homebrew
+install_packages

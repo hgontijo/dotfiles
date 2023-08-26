@@ -66,3 +66,7 @@ function unset-aws-keys() {
   unset AWS_ACCESS_KEY_ID
   unset AWS_SECRET_ACCESS_KEY
 }
+
+function git-copu() {
+  git commit -am "$@" && git push
+}
