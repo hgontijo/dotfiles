@@ -33,7 +33,8 @@ deleted = "🗑"
 disabled = true
 
 [python]
-disabled = true
+disabled = false
+pyenv_version_name = true
 
 [golang]
 disabled = true

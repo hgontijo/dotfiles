@@ -4,14 +4,15 @@ export IDEA_HOME=/Applications/IntelliJ\ IDEA.app/Contents
 # export JAVA_VERSION=11
 
 # Ensure the GNU tools are loaded first into the PATH
-PATH="/usr/local/opt/curl/bin:$PATH"
-PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/bin:$PATH"
+PATH="$(brew --prefix curl)/bin:$PATH"
+PATH="$(brew --prefix make)/libexec/gnubin:$PATH"
 PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/gettext/bin:$PATH"
+PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix gnu-tar)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix gnu-which)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
+PATH="$(brew --prefix gettext)/bin:$PATH"
 PATH="$(go env GOPATH)/bin:$PATH"
 PATH="${IDEA_HOME}/MacOS:$PATH"
 PATH="/Applications/GoLand.app/Contents/MacOS:$PATH"
