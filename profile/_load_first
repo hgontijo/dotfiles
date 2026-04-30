@@ -17,5 +17,6 @@ PATH="$(go env GOPATH)/bin:$PATH"
 PATH="${IDEA_HOME}/MacOS:$PATH"
 PATH="/Applications/GoLand.app/Contents/MacOS:$PATH"
 PATH="/usr/local/opt/node@18/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 
 export PATH
